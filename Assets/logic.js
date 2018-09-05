@@ -50,11 +50,11 @@ $(document).on("click", ".btn", function () { //what to do on clicking the butto
 
 $(document).on("click", ".searchImage", function () {
 	var state = $(this).attr("data-state"); //our state will be still by default
-	if (state == "still") {
+	if (state == "still") { //if you click on it, the state will become animated
 		$(this).attr("src", $(this).data("animated"));
 		$(this).attr("data-state", "animated");
 
-	} else {
+	} else { //clicking on it again makes it go still
 		$(this).attr("src", $(this).data("still"));
 		$(this).attr("data-state", "still");
 	}
@@ -63,9 +63,9 @@ $(document).on("click", ".searchImage", function () {
 //add new buttons
 $("#addSearch").on("click", function () {
 	event.preventDefault();
-	var newSearch = $("input").eq(0).val(); //this takes whatever we put in the input box and puts it into the variable newSearch --- eq0 is lookling for first version of input
-	topics.push(newSearch);
-	console.log(topics);
-	makeButtons(topics, "btn btn-info", "#buttonsArea")
+	var newSearch = $("input").eq(0).val().trim(); //this takes whatever we put in the input box and puts it into the variable newSearch --- eq0 is looking for first version of input
+	topics.push(newSearch); //put this into the topics array
+	console.log(topics); //console log it to check
+	makeButtons(topics, "btn btn-info", "#buttonsArea") //run the function to make the new buttons
 	return false; //prevent this click from reloading the page
 })
